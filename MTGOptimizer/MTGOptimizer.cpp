@@ -1,7 +1,6 @@
 #include "stdafx.h"
 
 void print_vector(std::vector<unsigned int> v) {
-	std::cout << std::endl;
 	for (unsigned int i = 0; i < v.size(); i++) {
 		std::cout << v[i] << " ";
 	}
