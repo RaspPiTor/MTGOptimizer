@@ -28,6 +28,18 @@ float test_deck(std::vector<unsigned int> deck, unsigned int turns,
 			hsize--;
 		}
 		print_vector(hand);
+		unsigned int lands = 0;
+		for (unsigned int turn = 1; turn <= turns; turn++) {
+			if (turn != 1 || ondraw) {
+				unsigned int n = cdeck.size() + 1;
+				while (n >= cdeck.size()) {
+					n = di(dre);
+				}
+				hand.push_back(cdeck.at(n));
+				cdeck.erase(cdeck.begin() + n);
+			}
+
+		}
 	}
 	return results / turns / number;
 }
