@@ -37,9 +37,6 @@ float test_deck(std::vector<unsigned int> deck, unsigned int turns,
 				hand.push_back(cdeck.at(n));
 				cdeck.erase(cdeck.begin() + n);
 			}
-			print_vector(hand);
-			std::cout << "Turn: " << turn << std::endl;
-			std::cout << "Lands: " << lands << std::endl;
 			for (unsigned int card = 0; card < hand.size(); card++) {
 				if (hand.at(card) == 0) {
 					lands += 1;
@@ -47,11 +44,8 @@ float test_deck(std::vector<unsigned int> deck, unsigned int turns,
 					break;
 				}
 			}
-			print_vector(hand);
 			std::sort(hand.begin(), hand.end());
 			std::reverse(hand.begin(), hand.end());
-			std::cout << "Sorted" << std::endl;
-			print_vector(hand);
 			unsigned int mana = lands;
 			for (unsigned int card = 0; card < hand.size(); card++) {
 				unsigned int cmc = hand.at(card);
@@ -61,6 +55,7 @@ float test_deck(std::vector<unsigned int> deck, unsigned int turns,
 					hand.erase(hand.begin() + card);
 				}
 			}
+			std::cout << lands << " " << mana << " " << turn << std::endl;
 			results += (lands - mana) / turn;
 			//auto l = std::count(hand.begin(), hand.end(), 0u);
 			//std::cout << "L: " << hand.at(l) << std::endl;
