@@ -6,7 +6,7 @@ float test_deck(std::vector<unsigned int> deck, unsigned int turns,
 	float results = 0.0;
 	std::default_random_engine dre;
 	std::uniform_int_distribution<unsigned int> di(0, deck.size());
-	for (unsigned int i = 0; i <= number; i++) {
+	for (unsigned int game = 0; game <= number; game++) {
 		unsigned int hsize = 7;
 		bool keeping = false;
 		std::vector<unsigned int> cdeck(deck);
@@ -52,6 +52,16 @@ float test_deck(std::vector<unsigned int> deck, unsigned int turns,
 			std::reverse(hand.begin(), hand.end());
 			std::cout << "Sorted" << std::endl;
 			print_vector(hand);
+			unsigned int mana = lands;
+			for (unsigned int card = 0; card < hand.size(); card++) {
+				unsigned int cmc = hand.at(card);
+				if (cmc <= lands) {
+					mana -= cmc;
+					card--;
+					hand.erase(hand.begin() + card);
+				}
+			}
+			results += (lands - mana) / turn;
 			//auto l = std::count(hand.begin(), hand.end(), 0u);
 			//std::cout << "L: " << hand.at(l) << std::endl;
 		}
