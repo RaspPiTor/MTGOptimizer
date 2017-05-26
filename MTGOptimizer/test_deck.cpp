@@ -39,6 +39,14 @@ float test_deck(std::vector<unsigned int> deck, unsigned int turns,
 			}
 			print_vector(hand);
 			std::cout << "Turn: " << turn << std::endl;
+			std::cout << "Lands: " << lands << std::endl;
+			for (unsigned int card = 0; card < hand.size(); card++) {
+				if (hand.at(card) == 0) {
+					lands += 1;
+					hand.erase(hand.begin() + card);
+					break;
+				}
+			}
 			//auto l = std::count(hand.begin(), hand.end(), 0u);
 			//std::cout << "L: " << hand.at(l) << std::endl;
 		}
