@@ -47,7 +47,10 @@ float test_deck(std::vector<unsigned int> deck, unsigned int turns,
 					break;
 				}
 			}
+			print_vector(hand);
 			std::sort(hand.begin(), hand.end());
+			std::cout << "Sorted" << std::endl;
+			print_vector(hand);
 			//auto l = std::count(hand.begin(), hand.end(), 0u);
 			//std::cout << "L: " << hand.at(l) << std::endl;
 		}
